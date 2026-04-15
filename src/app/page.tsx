@@ -1,65 +1,94 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { designPrinciples, publicServiceQualities } from "@/foundations/principles";
+import { ServiceShell } from "@/components/templates/service-shell";
+
+const pages = [
+  {
+    href: "/dashboard",
+    title: "공공서비스 홈/대시보드",
+    description: "민원 처리 현황, 공지, 자주 찾는 기능을 안정적으로 구성한 시작 화면",
+  },
+  {
+    href: "/notices",
+    title: "공지사항 목록",
+    description: "기관 공지 목록과 중요 공지 강조, 검색/필터 패턴",
+  },
+  {
+    href: "/service-apply",
+    title: "서비스 신청 폼",
+    description: "단계 안내, 섹션형 입력, 첨부파일 필드, 제출 검증 흐름",
+  },
+  {
+    href: "/status",
+    title: "처리 상태 조회",
+    description: "접수번호 기반 조회와 단계별 진행 상태 시각화",
+  },
+  {
+    href: "/complaint",
+    title: "민원/문의 접수",
+    description: "민원 유형 선택, 연락처 입력, 상세 내용 접수",
+  },
+  {
+    href: "/search",
+    title: "통합검색 결과",
+    description: "검색어 기반 결과 목록과 필터/정렬 제어",
+  },
+] as const;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <ServiceShell
+      activePath="/"
+      title="Minimal Public Design System"
+      description="KRDS의 공공서비스 중심 구조를 참고해 재해석한, 미니멀하고 접근성 중심의 프런트엔드 디자인 시스템 포트폴리오 프로젝트입니다."
+      actions={
+        <p className="rounded-sm border border-border-strong bg-bg-surface px-3 py-2 text-sm font-medium text-fg-default">
+          `npm run storybook`
+        </p>
+      }
+    >
+      <section className="ds-card p-5 md:p-6">
+        <h2 className="text-lg font-semibold tracking-tight">설계 원칙</h2>
+        <ul className="mt-4 grid gap-3 md:grid-cols-2">
+          {designPrinciples.map((principle) => (
+            <li key={principle.title} className="rounded-md border border-border-default bg-bg-canvas p-4">
+              <h3 className="text-sm font-semibold">{principle.title}</h3>
+              <p className="mt-2 text-sm text-fg-muted">{principle.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-5 ds-card p-5 md:p-6">
+        <h2 className="text-lg font-semibold tracking-tight">공공서비스 품질 기준</h2>
+        <ul className="mt-3 grid gap-2 text-sm text-fg-muted md:grid-cols-2">
+          {publicServiceQualities.map((quality) => (
+            <li key={quality} className="rounded-sm border border-border-default bg-bg-subtle px-3 py-2">
+              {quality}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-5 ds-card p-5 md:p-6">
+        <h2 className="text-lg font-semibold tracking-tight">예시 서비스 화면</h2>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {pages.map((page) => (
+            <Link
+              key={page.href}
+              href={page.href}
+              className="group rounded-md border border-border-default bg-bg-surface p-4 hover:border-border-strong hover:bg-bg-subtle"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <p className="text-sm font-semibold text-fg-default">{page.title}</p>
+              <p className="mt-2 text-sm text-fg-muted">{page.description}</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-fg-link">
+                화면 이동 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </ServiceShell>
   );
 }

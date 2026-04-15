@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ds-bg-canvas: #f6f8fa;
+  --ds-bg-surface: #ffffff;
+  --ds-bg-subtle: #eef2f5;
+  --ds-bg-inverse: #1f2a33;
+
+  --ds-fg-default: #121a21;
+  --ds-fg-muted: #425160;
+  --ds-fg-inverse: #ffffff;
+  --ds-fg-link: #0d4cb5;
+
+  --ds-border-default: #c8d2dc;
+  --ds-border-strong: #8a98a8;
+  --ds-border-focus: #0b5eff;
+
+  --ds-state-info: #0d4cb5;
+  --ds-state-success: #16794f;
+  --ds-state-warning: #b55d00;
+  --ds-state-danger: #be2d2d;
+
+  --ds-state-info-bg: #edf3ff;
+  --ds-state-success-bg: #edf8f3;
+  --ds-state-warning-bg: #fff5eb;
+  --ds-state-danger-bg: #fff0f0;
+
+  --ds-shadow-raised: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --ds-shadow-overlay: 0 8px 24px rgba(16, 24, 40, 0.16);
+
+  --ds-radius-sm: 0.25rem;
+  --ds-radius-md: 0.5rem;
+  --ds-radius-lg: 0.75rem;
+
+  --ds-content-width: 72rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-korean-sans);
+  --font-mono: var(--font-ui-mono);
+
+  --color-bg-canvas: var(--ds-bg-canvas);
+  --color-bg-surface: var(--ds-bg-surface);
+  --color-bg-subtle: var(--ds-bg-subtle);
+  --color-bg-inverse: var(--ds-bg-inverse);
+
+  --color-fg-default: var(--ds-fg-default);
+  --color-fg-muted: var(--ds-fg-muted);
+  --color-fg-inverse: var(--ds-fg-inverse);
+  --color-fg-link: var(--ds-fg-link);
+
+  --color-border-default: var(--ds-border-default);
+  --color-border-strong: var(--ds-border-strong);
+  --color-border-focus: var(--ds-border-focus);
+
+  --color-state-info: var(--ds-state-info);
+  --color-state-success: var(--ds-state-success);
+  --color-state-warning: var(--ds-state-warning);
+  --color-state-danger: var(--ds-state-danger);
+
+  --color-state-info-bg: var(--ds-state-info-bg);
+  --color-state-success-bg: var(--ds-state-success-bg);
+  --color-state-warning-bg: var(--ds-state-warning-bg);
+  --color-state-danger-bg: var(--ds-state-danger-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--ds-border-default);
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--ds-bg-canvas);
+  color: var(--ds-fg-default);
+  font-family: var(--font-korean-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+a {
+  color: var(--ds-fg-link);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ds-border-focus);
+  outline-offset: 2px;
+}
+
+.ds-container {
+  width: min(100% - 2rem, var(--ds-content-width));
+  margin-inline: auto;
+}
+
+.ds-card {
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-surface);
+  box-shadow: var(--ds-shadow-raised);
+}
+
+.ds-divider {
+  border-top: 1px solid var(--ds-border-default);
+}
+
+.ds-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .ds-container {
+    width: min(100% - 1rem, var(--ds-content-width));
+  }
 }
