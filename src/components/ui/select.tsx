@@ -16,7 +16,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-sm border border-border-default bg-bg-surface px-3 text-sm text-fg-default disabled:cursor-not-allowed disabled:bg-bg-subtle disabled:text-fg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus [&>span]:line-clamp-1",
+      "flex h-11 w-full items-center justify-between rounded-[0.625rem] border border-[rgba(0,0,0,0.22)] bg-bg-surface px-3.5 text-sm tracking-[-0.015em] text-fg-default disabled:cursor-not-allowed disabled:bg-bg-subtle disabled:text-fg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0071e3] [&>span]:line-clamp-1",
       className
     )}
     {...props}
@@ -65,7 +65,7 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 max-h-80 min-w-[8rem] overflow-hidden rounded-sm border border-border-default bg-bg-surface text-fg-default shadow-[var(--ds-shadow-overlay)]",
+        "relative z-50 max-h-80 min-w-[8rem] overflow-hidden rounded-xl border border-[rgba(0,0,0,0.08)] bg-bg-surface text-fg-default shadow-[0_8px_32px_rgba(0,0,0,0.12)]",
         position === "popper" && "translate-y-1",
         className
       )}
@@ -86,7 +86,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("px-2 py-1.5 text-xs font-semibold text-fg-muted", className)}
+    className={cn("px-2 py-1.5 text-sm font-semibold text-fg-muted", className)}
     {...props}
   />
 ));
@@ -99,7 +99,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-2 pl-8 pr-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-bg-subtle",
+      "relative flex w-full cursor-default select-none items-center rounded-lg py-2 pl-8 pr-3.5 text-sm tracking-[-0.015em] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-bg-subtle",
       className
     )}
     {...props}

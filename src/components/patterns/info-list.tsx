@@ -1,6 +1,7 @@
 interface InfoListItem {
   label: string;
   value: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 interface InfoListProps {
@@ -9,11 +10,18 @@ interface InfoListProps {
 
 export function InfoList({ items }: InfoListProps) {
   return (
-    <dl className="divide-y divide-border-default rounded-md border border-border-default bg-bg-surface">
+    <dl className="divide-y divide-[rgba(0,0,0,0.06)] overflow-hidden rounded-xl bg-bg-surface shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
       {items.map((item) => (
-        <div key={item.label} className="grid gap-1 px-4 py-3 md:grid-cols-[10rem_1fr] md:gap-3">
-          <dt className="text-sm font-medium text-fg-muted">{item.label}</dt>
-          <dd className="text-sm text-fg-default">{item.value}</dd>
+        <div key={item.label} className="grid gap-2 px-5 py-4 md:grid-cols-[10rem_1fr] md:gap-4">
+          <dt className="inline-flex items-center gap-2 text-xs font-medium tracking-[-0.01em] text-fg-muted">
+            {item.icon ? (
+              <span className="text-fg-muted" aria-hidden="true">
+                {item.icon}
+              </span>
+            ) : null}
+            {item.label}
+          </dt>
+          <dd className="text-sm tracking-[-0.015em] text-fg-default">{item.value}</dd>
         </div>
       ))}
     </dl>

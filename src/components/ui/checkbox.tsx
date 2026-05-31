@@ -43,7 +43,7 @@ function CheckboxField({
   disabled,
 }: CheckboxFieldProps) {
   return (
-    <div className="flex items-start gap-2.5">
+    <div className="flex items-start gap-3.5">
       <Checkbox
         id={id}
         checked={checked}
@@ -51,10 +51,10 @@ function CheckboxField({
         disabled={disabled}
       />
       <div className="space-y-0.5">
-        <label htmlFor={id} className="text-sm font-medium text-fg-default">
+        <label htmlFor={id} className="text-sm font-medium tracking-[-0.015em] text-fg-default">
           {label}
         </label>
-        {description ? <p className="text-sm text-fg-muted">{description}</p> : null}
+        {description ? <p className="text-sm tracking-[-0.015em] text-fg-muted">{description}</p> : null}
       </div>
     </div>
   );

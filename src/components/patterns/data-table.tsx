@@ -29,16 +29,16 @@ export function DataTable<T>({
   }
 
   return (
-    <div className="overflow-x-auto rounded-md border border-border-default bg-bg-surface">
+    <div className="overflow-x-auto rounded-xl bg-bg-surface shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
       <table className="w-full min-w-[42rem] border-collapse">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead>
-          <tr className="border-b border-border-default bg-bg-subtle">
+          <tr className="border-b border-[rgba(0,0,0,0.06)] bg-[rgba(0,0,0,0.025)]">
             {columns.map((column) => (
               <th
                 key={column.key}
                 scope="col"
-                className={`px-4 py-3 text-left text-sm font-semibold text-fg-default ${
+                className={`px-5 py-3.5 text-left text-xs font-semibold tracking-[-0.01em] text-fg-muted ${
                   column.className ?? ""
                 }`}
               >
@@ -49,9 +49,12 @@ export function DataTable<T>({
         </thead>
         <tbody>
           {rows.map((row, index) => (
-            <tr key={getRowId(row, index)} className="border-b border-border-default last:border-b-0">
+            <tr
+              key={getRowId(row, index)}
+              className="border-b border-[rgba(0,0,0,0.06)] last:border-b-0 transition-colors duration-150 hover:bg-[rgba(0,0,0,0.02)]"
+            >
               {columns.map((column) => (
-                <td key={column.key} className="px-4 py-3 text-sm text-fg-default">
+                <td key={column.key} className="px-5 py-3.5 text-sm tracking-[-0.015em] text-fg-default">
                   {column.render(row)}
                 </td>
               ))}

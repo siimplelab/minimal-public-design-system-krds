@@ -12,7 +12,7 @@ export function EmptyState({ title, description, action, className }: EmptyState
   return (
     <section
       className={cn(
-        "rounded-md border border-dashed border-border-strong bg-bg-surface px-5 py-8 text-center",
+        "rounded-xl bg-bg-subtle px-5 py-8 text-center",
         className
       )}
       aria-live="polite"
@@ -20,8 +20,8 @@ export function EmptyState({ title, description, action, className }: EmptyState
       <div className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-subtle text-fg-muted">
         <Inbox className="h-5 w-5" aria-hidden="true" />
       </div>
-      <h3 className="mt-3 text-base font-semibold">{title}</h3>
-      {description ? <p className="mt-2 text-sm text-fg-muted">{description}</p> : null}
+      <h3 className="mt-3 text-sm font-semibold tracking-[-0.02em] text-fg-default">{title}</h3>
+      {description ? <p className="mt-1.5 text-sm tracking-[-0.015em] text-fg-muted">{description}</p> : null}
       {action ? <div className="mt-4 flex justify-center">{action}</div> : null}
     </section>
   );

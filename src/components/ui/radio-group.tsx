@@ -8,7 +8,7 @@ const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <RadioGroupPrimitive.Root ref={ref} className={cn("grid gap-2", className)} {...props} />
+  <RadioGroupPrimitive.Root ref={ref} className={cn("grid gap-3", className)} {...props} />
 ));
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
@@ -51,13 +51,13 @@ function RadioGroupField({ name, value, onValueChange, options }: RadioGroupFiel
         <label
           key={option.value}
           htmlFor={`${name}-${option.value}`}
-          className="flex items-start gap-2 rounded-sm border border-border-default px-3 py-2"
+          className="flex items-start gap-3 rounded-[0.625rem] border border-[rgba(0,0,0,0.10)] px-4 py-3 transition-colors hover:bg-bg-subtle"
         >
           <RadioGroupItem id={`${name}-${option.value}`} value={option.value} />
           <span>
-            <span className="block text-sm font-medium text-fg-default">{option.label}</span>
+            <span className="block text-sm font-medium tracking-[-0.015em] text-fg-default">{option.label}</span>
             {option.description ? (
-              <span className="block text-sm text-fg-muted">{option.description}</span>
+              <span className="block text-sm tracking-[-0.015em] text-fg-muted">{option.description}</span>
             ) : null}
           </span>
         </label>

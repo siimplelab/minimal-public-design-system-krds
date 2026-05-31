@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { Bell, Filter, List, Megaphone } from "lucide-react";
 import {
   DataTable,
   FilterGroup,
@@ -47,31 +48,43 @@ export default function NoticesPage() {
       description="기관 공지와 서비스 안내를 일관된 표 구조로 제공하는 목록 패턴입니다."
     >
       <PageHeader
+        className="animate-fade-up"
         title="공지사항"
         description="중요 공지, 업데이트 안내, 점검 공지를 확인할 수 있습니다."
         breadcrumbs={[{ href: "/", label: "홈" }, { label: "공지사항" }]}
       />
 
-      <div className="mt-5 space-y-4">
-        <SearchForm
-          onSearch={({ keyword: nextKeyword }) => {
-            setKeyword(nextKeyword);
-            setPage(1);
-          }}
-        />
+      <div className="mt-6 space-y-4">
+        <div className="animate-fade-up" style={{ animationDelay: "60ms" }}>
+          <SearchForm
+            onSearch={({ keyword: nextKeyword }) => {
+              setKeyword(nextKeyword);
+              setPage(1);
+            }}
+          />
+        </div>
 
-        <FilterGroup
-          title="카테고리 필터"
-          options={categoryOptions}
-          value={categories}
-          onChange={(next) => {
-            setCategories(next);
-            setPage(1);
-          }}
-        />
+        <div className="animate-fade-up" style={{ animationDelay: "120ms" }}>
+          <FilterGroup
+            title="카테고리 필터"
+            options={categoryOptions}
+            value={categories}
+            onChange={(next) => {
+              setCategories(next);
+              setPage(1);
+            }}
+          />
+        </div>
 
-        <section className="rounded-md border border-border-default bg-bg-surface p-4">
-          <SectionHeader title="공지 목록" description="중요 공지는 별도 뱃지로 표시됩니다." />
+        <section
+          className="animate-fade-up rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)] sm:p-6"
+          style={{ animationDelay: "180ms" }}
+        >
+          <SectionHeader
+            title="공지 목록"
+            icon={<List className="h-4 w-4" />}
+            description="중요 공지는 별도 뱃지로 표시됩니다."
+          />
           <DataTable
             caption="공지사항 목록"
             rows={pagedRows}
@@ -83,8 +96,26 @@ export default function NoticesPage() {
                 className: "w-28",
                 render: (row) => (row.important ? <Badge variant="danger">중요</Badge> : <Badge>일반</Badge>),
               },
-              { key: "title", header: "제목", render: (row) => row.title },
-              { key: "category", header: "분류", render: (row) => row.category },
+              {
+                key: "title",
+                header: "제목",
+                render: (row) => (
+                  <span className="inline-flex items-center gap-1.5">
+                    <Bell className="h-3.5 w-3.5 text-fg-muted" aria-hidden="true" />
+                    {row.title}
+                  </span>
+                ),
+              },
+              {
+                key: "category",
+                header: "분류",
+                render: (row) => (
+                  <span className="inline-flex items-center gap-1.5">
+                    <Filter className="h-3.5 w-3.5 text-fg-muted" aria-hidden="true" />
+                    {row.category}
+                  </span>
+                ),
+              },
               { key: "date", header: "등록일", render: (row) => row.date },
               {
                 key: "detail",

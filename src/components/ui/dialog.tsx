@@ -31,14 +31,14 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-md border border-border-default bg-bg-surface p-5 shadow-[var(--ds-shadow-overlay)]",
+        "fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-xl bg-bg-surface p-6 shadow-[rgba(0,0,0,0.18)_3px_5px_30px_0px]",
         className
       )}
       {...props}
     >
       {children}
       <DialogPrimitive.Close
-        className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-sm text-fg-muted hover:bg-bg-subtle hover:text-fg-default focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
+        className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-lg text-fg-muted hover:bg-bg-subtle hover:text-fg-default focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0071e3]"
         aria-label="닫기"
       >
         <X className="h-4 w-4" />
@@ -53,7 +53,7 @@ const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
 );
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("mt-5 flex items-center justify-end gap-2", className)} {...props} />
+  <div className={cn("mt-5 flex items-center justify-end gap-3", className)} {...props} />
 );
 
 const DialogTitle = React.forwardRef<
@@ -62,7 +62,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("text-base font-semibold tracking-tight", className)}
+    className={cn("text-base font-semibold tracking-[-0.025em] text-fg-default", className)}
     {...props}
   />
 ));
@@ -74,7 +74,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-fg-muted", className)}
+    className={cn("text-sm tracking-[-0.015em] text-fg-muted", className)}
     {...props}
   />
 ));

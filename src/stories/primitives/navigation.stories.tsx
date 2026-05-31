@@ -10,29 +10,43 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const TabsAndPagination: Story = {
+export const TabsStory: Story = {
+  name: "Tabs",
+  render: () => (
+    <div className="w-[420px] space-y-4">
+      <Tabs defaultValue="a">
+        <TabsList>
+          <TabsTrigger value="a">신청 정보</TabsTrigger>
+          <TabsTrigger value="b">첨부 서류</TabsTrigger>
+          <TabsTrigger value="c">처리 이력</TabsTrigger>
+        </TabsList>
+        <TabsContent value="a">
+          <div className="rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
+            <p className="text-sm tracking-[-0.015em] text-fg-default">신청인 및 신청 항목 정보</p>
+          </div>
+        </TabsContent>
+        <TabsContent value="b">
+          <div className="rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
+            <p className="text-sm tracking-[-0.015em] text-fg-default">제출한 첨부파일 목록</p>
+          </div>
+        </TabsContent>
+        <TabsContent value="c">
+          <div className="rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
+            <p className="text-sm tracking-[-0.015em] text-fg-default">단계별 처리 로그</p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>
+  ),
+};
+
+export const PaginationStory: Story = {
+  name: "Pagination",
   render: () => {
     const [page, setPage] = useState(2);
-
     return (
-      <div className="space-y-4">
-        <Tabs defaultValue="a" className="max-w-lg">
-          <TabsList>
-            <TabsTrigger value="a">신청 정보</TabsTrigger>
-            <TabsTrigger value="b">첨부 서류</TabsTrigger>
-            <TabsTrigger value="c">처리 이력</TabsTrigger>
-          </TabsList>
-          <TabsContent value="a" className="rounded-md border border-border-default bg-bg-surface p-3 text-sm">
-            신청인 및 신청 항목 정보
-          </TabsContent>
-          <TabsContent value="b" className="rounded-md border border-border-default bg-bg-surface p-3 text-sm">
-            제출한 첨부파일 목록
-          </TabsContent>
-          <TabsContent value="c" className="rounded-md border border-border-default bg-bg-surface p-3 text-sm">
-            단계별 처리 로그
-          </TabsContent>
-        </Tabs>
-
+      <div className="space-y-2">
+        <p className="text-center text-xs text-fg-muted">현재 페이지: {page}</p>
         <Pagination page={page} totalPages={10} onPageChange={setPage} />
       </div>
     );

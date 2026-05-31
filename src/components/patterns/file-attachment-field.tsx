@@ -19,31 +19,31 @@ export function FileAttachmentField({
   return (
     <div className="space-y-2">
       <div>
-        <label htmlFor={id} className="text-sm font-medium">
+        <label htmlFor={id} className="text-sm font-medium tracking-[-0.015em] text-fg-default">
           {label}
         </label>
-        <p className="mt-1 text-sm text-fg-muted">{description}</p>
+        <p className="mt-1.5 text-sm tracking-[-0.015em] text-fg-muted">{description}</p>
       </div>
 
-      <div className="rounded-md border border-border-default bg-bg-subtle p-3">
+      <div className="rounded-[0.625rem] bg-bg-subtle p-3">
         <input
           id={id}
           name="attachments"
           type="file"
           multiple
-          className="block w-full rounded-sm border border-border-default bg-bg-surface px-3 py-2 text-sm file:mr-3 file:rounded-sm file:border-0 file:bg-state-info file:px-2.5 file:py-1.5 file:text-sm file:font-medium file:text-fg-inverse"
+          className="block w-full rounded-[0.625rem] border border-[rgba(0,0,0,0.10)] bg-bg-surface px-4 py-3 text-sm tracking-[-0.015em] file:mr-3 file:rounded-md file:border-0 file:bg-[#0071e3] file:px-3 file:py-1 file:text-xs file:font-medium file:text-white"
           onChange={(event) => setFiles(Array.from(event.target.files ?? []))}
         />
 
         {files.length > 0 ? (
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-2.5 space-y-1.5">
             {files.map((file) => (
               <li
                 key={`${file.name}-${file.size}`}
-                className="flex items-center justify-between rounded-sm border border-border-default bg-bg-surface px-3 py-2 text-sm"
+                className="flex items-center justify-between rounded-[0.625rem] bg-bg-surface px-4 py-2.5 text-sm"
               >
                 <span className="inline-flex items-center gap-1.5 text-fg-default">
-                  <Paperclip className="h-4 w-4 text-fg-muted" />
+                  <Paperclip className="h-3.5 w-3.5 text-fg-muted" />
                   {file.name}
                 </span>
                 <Button
@@ -57,7 +57,7 @@ export function FileAttachmentField({
                   }}
                   aria-label={`${file.name} 삭제`}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-3.5 w-3.5" />
                 </Button>
               </li>
             ))}

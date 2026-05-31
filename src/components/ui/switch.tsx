@@ -35,12 +35,12 @@ interface SwitchFieldProps {
 
 function SwitchField({ id, checked, onCheckedChange, label, description }: SwitchFieldProps) {
   return (
-    <div className="flex items-center justify-between rounded-sm border border-border-default px-3 py-2">
+    <div className="flex items-center justify-between rounded-[0.625rem] border border-[rgba(0,0,0,0.08)] bg-bg-canvas px-4 py-3">
       <div>
-        <label htmlFor={id} className="text-sm font-medium text-fg-default">
+        <label htmlFor={id} className="text-sm font-medium tracking-[-0.015em] text-fg-default">
           {label}
         </label>
-        {description ? <p className="text-sm text-fg-muted">{description}</p> : null}
+        {description ? <p className="text-sm tracking-[-0.015em] text-fg-muted">{description}</p> : null}
       </div>
       <Switch id={id} checked={checked} onCheckedChange={onCheckedChange} />
     </div>

@@ -1,24 +1,24 @@
 export const colorTokens = {
   neutral: {
     0: "#ffffff",
-    50: "#f6f8fa",
-    100: "#eef2f5",
-    200: "#dde4ea",
-    300: "#c8d2dc",
-    400: "#8a98a8",
-    500: "#5f6b78",
-    600: "#3f4b57",
-    700: "#2d3944",
-    800: "#1f2a33",
-    900: "#121a21",
+    50: "#f5f5f7",
+    100: "#f0f0f3",
+    200: "#e4e4e8",
+    300: "#c8c8cc",
+    400: "#8e8e93",
+    500: "#636366",
+    600: "#48484a",
+    700: "#3a3a3c",
+    800: "#2c2c2e",
+    900: "#1d1d1f",
   },
   semantic: {
-    primary: "#0d4cb5",
-    info: "#0d4cb5",
-    success: "#16794f",
+    primary: "#0071e3",
+    info: "#0071e3",
+    success: "#1a7f4b",
     warning: "#b55d00",
-    danger: "#be2d2d",
-    accent: "#005f83",
+    danger: "#c9302c",
+    accent: "#0066cc",
   },
 } as const;
 
@@ -54,23 +54,23 @@ export const typographyTokens = {
     mono: '"IBM Plex Mono", "SFMono-Regular", Menlo, monospace',
   },
   fontSize: {
-    display: "2rem",
-    h1: "1.75rem",
-    h2: "1.375rem",
-    h3: "1.125rem",
-    bodyLg: "1rem",
+    display: "1.875rem",
+    h1: "1.875rem",
+    h2: "1.25rem",
+    h3: "1rem",
+    bodyLg: "0.9375rem",
     body: "0.9375rem",
     caption: "0.8125rem",
   },
   lineHeight: {
-    compact: "1.4",
-    normal: "1.55",
+    compact: "1.2",
+    normal: "1.6",
     relaxed: "1.7",
   },
   letterSpacing: {
-    tight: "-0.01em",
-    normal: "0",
-    wide: "0.02em",
+    tight: "-0.03em",
+    normal: "-0.018em",
+    loose: "-0.01em",
   },
 } as const;
 
@@ -88,27 +88,29 @@ export const spacingTokens = {
 
 export const radiusTokens = {
   none: "0",
-  sm: "0.25rem",
-  md: "0.5rem",
-  lg: "0.75rem",
+  sm: "0.375rem",
+  md: "0.625rem",
+  lg: "0.875rem",
+  xl: "1.25rem",
   pill: "9999px",
 } as const;
 
 export const borderTokens = {
-  subtle: "1px solid var(--ds-border-default)",
-  strong: "1px solid var(--ds-border-strong)",
+  subtle: "1px solid rgba(0, 0, 0, 0.08)",
+  default: "1px solid rgba(0, 0, 0, 0.10)",
+  strong: "1px solid rgba(0, 0, 0, 0.22)",
   focus: "2px solid var(--ds-border-focus)",
 } as const;
 
 export const elevationTokens = {
   flat: "none",
-  raised: "0 1px 2px rgba(16, 24, 40, 0.06)",
-  overlay: "0 8px 24px rgba(16, 24, 40, 0.16)",
+  raised: "0 2px 8px rgba(0, 0, 0, 0.07)",
+  overlay: "rgba(0, 0, 0, 0.18) 3px 5px 30px 0px",
 } as const;
 
 export const layoutTokens = {
-  contentWidth: "72rem",
-  sectionGap: "2.5rem",
+  contentWidth: "74rem",
+  sectionGap: "3rem",
   cardPadding: "1.5rem",
 } as const;
 

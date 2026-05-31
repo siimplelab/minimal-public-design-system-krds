@@ -18,23 +18,29 @@ export function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
           <li
             key={step}
             className={cn(
-              "flex items-center gap-2 rounded-sm border px-3 py-2 text-sm",
+              "flex items-center gap-2.5 rounded-xl border px-4 py-3 text-sm tracking-[-0.015em] transition-all duration-300",
               isCurrent
-                ? "border-state-info bg-state-info-bg text-state-info"
-                : "border-border-default bg-bg-surface text-fg-muted"
+                ? "border-[#0071e3] bg-bg-surface text-fg-default shadow-[0_0_0_1px_#0071e3]"
+                : isDone
+                  ? "border-[rgba(0,0,0,0.08)] bg-bg-surface text-fg-muted"
+                  : "border-[rgba(0,0,0,0.08)] bg-bg-canvas text-fg-muted"
             )}
             aria-current={isCurrent ? "step" : undefined}
           >
             <span
               className={cn(
-                "inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold",
-                isDone ? "bg-state-success text-fg-inverse" : "bg-bg-subtle text-fg-default"
+                "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold",
+                isDone
+                  ? "bg-[#1a7f4b] text-white"
+                  : isCurrent
+                    ? "bg-[#0071e3] text-white"
+                    : "bg-[rgba(0,0,0,0.08)] text-fg-muted"
               )}
               aria-hidden="true"
             >
-              {isDone ? <Check className="h-3.5 w-3.5" /> : stepNumber}
+              {isDone ? <Check className="h-3 w-3" /> : stepNumber}
             </span>
-            <span>{step}</span>
+            <span className={cn("font-medium", isCurrent && "text-fg-default")}>{step}</span>
           </li>
         );
       })}

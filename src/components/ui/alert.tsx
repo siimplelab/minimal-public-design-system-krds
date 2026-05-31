@@ -3,13 +3,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { AlertCircle, AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-const alertVariants = cva("rounded-md border px-4 py-3", {
+const alertVariants = cva("rounded-xl px-5 py-4", {
   variants: {
     variant: {
-      info: "border-state-info bg-state-info-bg text-state-info",
-      success: "border-state-success bg-state-success-bg text-state-success",
-      warning: "border-state-warning bg-state-warning-bg text-state-warning",
-      danger: "border-state-danger bg-state-danger-bg text-state-danger",
+      info: "bg-[#e8f1ff] text-[#0071e3]",
+      success: "bg-[#e8f8f0] text-[#1a7f4b]",
+      warning: "bg-[#fff5e6] text-[#b55d00]",
+      danger: "bg-[#fff0f0] text-[#c9302c]",
     },
   },
   defaultVariants: {
@@ -36,11 +36,11 @@ export function Alert({ className, variant = "info", title, children, ...props }
   const Icon = iconMap[variant as keyof typeof iconMap];
   return (
     <div className={cn(alertVariants({ variant }), className)} role="status" {...props}>
-      <div className="flex items-start gap-2">
-        <Icon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+      <div className="flex items-start gap-3">
+        <Icon className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         <div>
-          {title ? <p className="text-sm font-semibold">{title}</p> : null}
-          {children ? <div className="mt-1 text-sm text-fg-default/90">{children}</div> : null}
+          {title ? <p className="text-sm font-semibold tracking-[-0.02em]">{title}</p> : null}
+          {children ? <div className="mt-1.5 text-sm tracking-[-0.015em] text-fg-default/80">{children}</div> : null}
         </div>
       </div>
     </div>

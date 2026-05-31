@@ -27,7 +27,7 @@ export function Pagination({ page, totalPages, onPageChange, className }: Pagina
   const pages = getPages(page, totalPages);
 
   return (
-    <nav className={cn("flex items-center gap-2", className)} aria-label="페이지 이동">
+    <nav className={cn("flex items-center gap-3", className)} aria-label="페이지 이동">
       <Button
         variant="secondary"
         size="sm"
@@ -51,10 +51,10 @@ export function Pagination({ page, totalPages, onPageChange, className }: Pagina
                   type="button"
                   onClick={() => onPageChange?.(pageNumber)}
                   className={cn(
-                    "h-8 min-w-8 rounded-sm border px-2 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus",
+                    "h-8 min-w-8 rounded-lg px-2 text-sm font-medium tracking-[-0.01em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0071e3]",
                     pageNumber === page
-                      ? "border-state-info bg-state-info text-fg-inverse"
-                      : "border-border-default bg-bg-surface text-fg-default hover:bg-bg-subtle"
+                      ? "bg-[#0071e3] text-white"
+                      : "text-fg-default hover:bg-bg-subtle"
                   )}
                   aria-current={pageNumber === page ? "page" : undefined}
                 >

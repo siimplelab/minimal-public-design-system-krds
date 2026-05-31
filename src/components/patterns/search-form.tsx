@@ -12,7 +12,7 @@ interface SearchFormProps {
 export function SearchForm({ defaultKeyword = "", defaultCategory = "all", onSearch }: SearchFormProps) {
   return (
     <form
-      className="rounded-md border border-border-default bg-bg-surface p-4"
+      className="rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)] sm:p-6"
       onSubmit={(event) => {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
@@ -22,9 +22,9 @@ export function SearchForm({ defaultKeyword = "", defaultCategory = "all", onSea
         });
       }}
     >
-      <div className="grid gap-3 md:grid-cols-[12rem_1fr_auto]">
+      <div className="grid gap-4 md:grid-cols-[13rem_1fr_auto]">
         <div>
-          <label htmlFor="search-category" className="mb-1 block text-sm font-medium">
+          <label htmlFor="search-category" className="mb-2 block text-sm font-medium tracking-[-0.015em] text-fg-default">
             분류
           </label>
           <Select name="category" defaultValue={defaultCategory}>
@@ -41,7 +41,7 @@ export function SearchForm({ defaultKeyword = "", defaultCategory = "all", onSea
         </div>
 
         <div>
-          <label htmlFor="search-keyword" className="mb-1 block text-sm font-medium">
+          <label htmlFor="search-keyword" className="mb-2 block text-sm font-medium tracking-[-0.015em] text-fg-default">
             통합검색
           </label>
           <Input
@@ -52,7 +52,7 @@ export function SearchForm({ defaultKeyword = "", defaultCategory = "all", onSea
           />
         </div>
 
-        <div className="md:pt-6">
+        <div className="md:pt-7">
           <Button type="submit" className="w-full md:w-auto">
             <Search className="h-4 w-4" />
             검색

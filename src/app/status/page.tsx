@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CalendarDays, FileClock, Info, Search, UserRound } from "lucide-react";
 import { PageHeader, InfoList, StatusBadge, StepIndicator, DetailPanel } from "@/components/patterns";
 import { Button, Input } from "@/components/ui";
 import { ServiceShell } from "@/components/templates/service-shell";
@@ -33,22 +34,24 @@ export default function StatusPage() {
       description="접수번호를 입력하면 현재 단계와 처리 결과를 확인할 수 있습니다."
     >
       <PageHeader
+        className="animate-fade-up"
         title="신청 처리상태 조회"
         description="접수번호는 신청 완료 후 문자 또는 이메일로 안내됩니다."
         breadcrumbs={[{ href: "/", label: "홈" }, { label: "처리 조회" }]}
       />
 
       <form
-        className="mt-5 rounded-md border border-border-default bg-bg-surface p-4"
+        className="animate-fade-up mt-6 rounded-xl bg-bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.07)] sm:p-6"
+        style={{ animationDelay: "80ms" }}
         onSubmit={(event) => {
           event.preventDefault();
           setQuery(keyword.trim());
         }}
       >
-        <label htmlFor="application-id" className="mb-1 block text-sm font-medium">
+        <label htmlFor="application-id" className="mb-2 block text-sm font-medium tracking-[-0.015em] text-fg-default">
           접수번호
         </label>
-        <div className="flex flex-col gap-2 md:flex-row">
+        <div className="flex flex-col gap-3 md:flex-row">
           <Input
             id="application-id"
             value={keyword}
@@ -56,23 +59,27 @@ export default function StatusPage() {
             placeholder="예: AP-260401-1082"
             className="md:max-w-sm"
           />
-          <Button type="submit">조회하기</Button>
+          <Button type="submit">
+            <Search className="h-4 w-4" />
+            조회하기
+          </Button>
         </div>
       </form>
 
-      <div className="mt-5">
+      <div className="animate-fade-up mt-5" style={{ animationDelay: "160ms" }}>
         {application ? (
           <DetailPanel title="신청 상세" status={<StatusBadge status={application.status} />}>
             <StepIndicator steps={steps} currentStep={currentStep} />
             <div className="mt-4">
               <InfoList
                 items={[
-                  { label: "접수번호", value: application.id },
-                  { label: "서비스", value: application.service },
-                  { label: "신청인", value: application.applicant },
-                  { label: "접수일", value: application.submittedAt },
+                  { label: "접수번호", value: application.id, icon: <FileClock className="h-3.5 w-3.5" /> },
+                  { label: "서비스", value: application.service, icon: <Search className="h-3.5 w-3.5" /> },
+                  { label: "신청인", value: application.applicant, icon: <UserRound className="h-3.5 w-3.5" /> },
+                  { label: "접수일", value: application.submittedAt, icon: <CalendarDays className="h-3.5 w-3.5" /> },
                   {
                     label: "안내",
+                    icon: <Info className="h-3.5 w-3.5" />,
                     value:
                       application.status === "처리완료"
                         ? "처리가 완료되었습니다. 상세 결과는 상세보기에서 확인할 수 있습니다."
@@ -83,7 +90,7 @@ export default function StatusPage() {
             </div>
           </DetailPanel>
         ) : (
-          <div className="rounded-md border border-border-default bg-bg-surface px-4 py-6 text-sm text-fg-muted">
+          <div className="rounded-xl bg-bg-surface px-5 py-8 text-center text-sm tracking-[-0.015em] text-fg-muted shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
             입력한 접수번호에 해당하는 신청 정보가 없습니다.
           </div>
         )}

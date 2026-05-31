@@ -28,7 +28,7 @@ export const Controls: Story = {
     const [radio, setRadio] = useState("a");
 
     return (
-      <div className="grid max-w-2xl gap-4 rounded-md border border-border-default bg-bg-surface p-4">
+      <div className="grid max-w-2xl gap-4 rounded-xl bg-bg-surface p-5 shadow-[0_2px_8px_rgba(0,0,0,0.07)]">
         <div>
           <label className="mb-1 block text-sm font-medium">기본 입력</label>
           <Input placeholder="예: 홍길동" />
